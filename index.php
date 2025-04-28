@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,6 +23,7 @@
     }
     canvas {
       margin-top: 40px;
+      max-width: 90%;
     }
   </style>
 </head>
@@ -55,7 +55,7 @@
     </tbody>
   </table>
 
-  <canvas id="salesChart" width="800" height="400"></canvas>
+  <canvas id="salesChart"></canvas>
 
   <script>
     const ctx = document.getElementById('salesChart').getContext('2d');
@@ -82,9 +82,22 @@
         }]
       },
       options: {
+        responsive: true,
         scales: {
           y: {
-            beginAtZero: true
+            beginAtZero: true,
+            ticks: {
+              stepSize: 50000
+            }
+          }
+        },
+        plugins: {
+          legend: {
+            position: 'top'
+          },
+          title: {
+            display: true,
+            text: 'Sales Report by Regional Manager'
           }
         }
       }

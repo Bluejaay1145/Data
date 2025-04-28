@@ -1,1 +1,95 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sales Report with Chart</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+    table {
+      width: 70%;
+      margin: 20px auto;
+      border-collapse: collapse;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+    }
+    th {
+      background-color: #f0f0f0;
+    }
+    canvas {
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Regional Manager Sales Report</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Regional Manager</th>
+        <th>Order Date</th>
+        <th>Sales ($)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Fred Suzuki</td><td>2022</td><td>103846</td></tr>
+      <tr><td>Roxanne Rodriguez</td><td>2023</td><td>122906</td></tr>
+      <tr><td>Chuck Magee</td><td>2021</td><td>71360</td></tr>
+      <tr><td>Fred Suzuki</td><td>2024</td><td>93610</td></tr>
+      <tr><td>Roxanne Rodriguez</td><td>2022</td><td>102874</td></tr>
+      <tr><td>Chuck Magee</td><td>2021</td><td>103838</td></tr>
+      <tr><td>Sadie Pawthorne</td><td>2024</td><td>147854</td></tr>
+      <tr><td>Fred Suzuki</td><td>2023</td><td>148605</td></tr>
+      <tr><td>Chuck Magee</td><td>2021</td><td>135440</td></tr>
+      <tr><td>Sadie Pawthorne</td><td>2022</td><td>157071</td></tr>
+      <tr><td>Fred Suzuki</td><td>2022</td><td>182750</td></tr>
+      <tr><td>Sadie Pawthorne</td><td>2021</td><td>216567</td></tr>
+    </tbody>
+  </table>
+
+  <canvas id="salesChart" width="800" height="400"></canvas>
+
+  <script>
+    const ctx = document.getElementById('salesChart').getContext('2d');
+    const salesChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: [
+          'Fred Suzuki (2022)', 'Roxanne Rodriguez (2023)', 'Chuck Magee (2021)', 
+          'Fred Suzuki (2024)', 'Roxanne Rodriguez (2022)', 'Chuck Magee (2021)',
+          'Sadie Pawthorne (2024)', 'Fred Suzuki (2023)', 'Chuck Magee (2021)', 
+          'Sadie Pawthorne (2022)', 'Fred Suzuki (2022)', 'Sadie Pawthorne (2021)'
+        ],
+        datasets: [{
+          label: 'Sales in USD',
+          data: [
+            103846, 122906, 71360,
+            93610, 102874, 103838,
+            147854, 148605, 135440,
+            157071, 182750, 216567
+          ],
+          backgroundColor: 'rgba(54, 162, 235, 0.6)',
+          borderColor: 'rgba(54, 162, 235, 1)',
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>
